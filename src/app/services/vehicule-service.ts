@@ -1,0 +1,37 @@
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+export type Statut = 'in_use' | 'available' | 'charging';
+
+export type TMoteur = 'ICE' | 'BEV';
+
+interface VehiculeDate {
+  human: string;
+  string: string;
+  local: string;
+  timestamp: number;
+}
+
+export interface Vehicule {
+  id: number;
+  marque: string;
+  modele: string;
+  type_moteur: TMoteur;
+  statut: Statut;
+  created_at: VehiculeDate;
+  updated_at: VehiculeDate;
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class VehiculeService {
+  
+  private http = inject(HttpClient);
+
+  getVehicules() {
+   
+    return this.http.get<Vehicule[]>('http://127.0.0.1:8000/api/v1/vehicles');
+
+  }
+}
