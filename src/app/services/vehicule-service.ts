@@ -13,7 +13,7 @@ interface VehiculeDate {
 }
 
 export interface Vehicule {
-  id?: number;
+  id?: string;
   marque: string;
   modele: string;
   type_moteur: TMoteur;
@@ -26,17 +26,24 @@ export interface Vehicule {
   providedIn: 'root',
 })
 export class VehiculeService {
+
+  private apiUrl = 'http://127.0.0.1:8000/api/v1'
   
   private http = inject(HttpClient);
 
   getVehicules() {
    
-    return this.http.get<Vehicule[]>('http://127.0.0.1:8000/api/v1/vehicles');
+    return this.http.get<Vehicule[]>(`${this.apiUrl}/vehicles`);
 
   }
 
   addVehicule(vehicule:Vehicule) {
-    return this.http.post<Vehicule>('http://127.0.0.1:8000/api/v1/vehicles', vehicule);
+  
+    return this.http.post<Vehicule>(`${this.apiUrl}/vehicles`, vehicule);
+  }
+
+  deleteVehicule(id:string| undefined) {
+    return this.http.delete(`${this.apiUrl}/vehicles/${id}`)
   }
    
 }

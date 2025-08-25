@@ -20,6 +20,8 @@ export class AddVehicule {
 
   private router = inject(Router);
 
+  protected loading = signal(false)
+
 
   private vehiculeService = inject(VehiculeService);
 
@@ -31,13 +33,18 @@ export class AddVehicule {
         type_moteur: this.vehiculeForm.value.type_moteur! as TMoteur
       };
 
+       this.loading.set(true)
+
       this.vehiculeService.addVehicule(vehicule).subscribe({
         next: (data) => {
+         
           console.log('Véhicule ajouté avec succès :', data);
+
           this.vehiculeForm.reset();
           this.router.navigate(['/vehicules']);
         },
         error: (err) => {
+          this.loading.set(false)
           console.error('Erreur lors de l\'ajout du véhicule :', err);
         }
       });

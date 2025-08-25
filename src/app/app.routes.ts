@@ -15,7 +15,7 @@ export const routes: Routes = [
   {
     path:'vehicule/add',
     component:AddVehicule
-  }
+  },
 
 
 ];

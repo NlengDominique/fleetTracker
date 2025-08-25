@@ -1,61 +1,59 @@
-
 @if (loading()) {
-
-  <p>Loading ...</p>
+<p>Loading ...</p>
 }
 
-
 <div class="flex items-center justify-between p-6 bg-white shadow-md rounded-md mb-6">
-  <h1 class=" text-4xl font-bold mb-8">Listes des vehicules</h1>
+  <h1 class="text-4xl font-bold mb-8">Listes des vehicules</h1>
   <a routerLink="/vehicule/add" class="bg-green-500 text-white font-bold py-2 px-4 rounded">
     Ajouter un vehicule
   </a>
 </div>
-
 
 <div class="p-6">
   <div class="overflow-x-auto shadow-lg rounded-lg">
     <table class="min-w-full text-left border-collapse">
       <thead>
         <tr class="bg-gray-100 text-gray-700">
-      
+          <th>ID</th>
           <th class="px-4 py-2 border">Marque</th>
           <th class="px-4 py-2 border">Modèle</th>
           <th class="px-4 py-2 border">Moteur</th>
-           <th class="px-4 py-2 border">Statut</th>
+          <th class="px-4 py-2 border">Statut</th>
+          <th class="px-4 py-2 border">Action</th>
         </tr>
-        @for (vehicule of vehicules; track vehicule.id) {
-          <tr>
-            <td class="px-4 py-2 border">{{ vehicule.marque }}</td>
-            <td class="px-4 py-2 border">{{ vehicule.modele }}</td>
-            <td class="px-4 py-2 border">{{ vehicule.type_moteur }}</td>
-            <td class="px-4 py-2 border">
- @switch (vehicule.statut) {
-    @case ('charging') {
-      <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">
-        {{vehicule.statut}}
-      </span>
-    }
-    @case ('available') {
-      <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm font-semibold">
-     {{vehicule.statut}}
-      </span>
-    }
-    @case ('in_use') {
-      <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-sm font-semibold">
-         {{vehicule.statut}}
-      </span>
-    }
-  }
- 
-            </td>
-            
-          </tr>
+        @for (vehicule of vehicules(); track vehicule.id) {
+        <tr>
+          <td class="px-4 py-2 border">{{ vehicule.id }}</td>
+          <td class="px-4 py-2 border">{{ vehicule.marque }}</td>
+          <td class="px-4 py-2 border">{{ vehicule.modele }}</td>
+          <td class="px-4 py-2 border">{{ vehicule.type_moteur }}</td>
+          <td class="px-4 py-2 border">
+            @switch (vehicule.statut) { @case ('charging') {
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">
+              {{ vehicule.statut }}
+            </span>
+            } @case ('available') {
+            <span
+              class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm font-semibold"
+            >
+              {{ vehicule.statut }}
+            </span>
+            } @case ('in_use') {
+            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-sm font-semibold">
+              {{ vehicule.statut }}
+            </span>
+            } }
+          </td>
+          <td class="px-4 py-2 border">Edit</td>
+          <td class="px-4 py-2 border">
+            <button (click)="deleteVehicule(vehicule.id)" class="bg-red-600 px-2 py-2 rounded-lg">
+              Delete
+            </button>
+          </td>
+        </tr>
         }
       </thead>
-      <tbody>
-        
-      </tbody>
+      <tbody></tbody>
     </table>
   </div>
 </div>
