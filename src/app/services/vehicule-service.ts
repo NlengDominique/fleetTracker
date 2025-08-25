@@ -13,13 +13,13 @@ interface VehiculeDate {
 }
 
 export interface Vehicule {
-  id: number;
+  id?: number;
   marque: string;
   modele: string;
   type_moteur: TMoteur;
-  statut: Statut;
-  created_at: VehiculeDate;
-  updated_at: VehiculeDate;
+  statut?: Statut;
+  created_at?: VehiculeDate;
+  updated_at?: VehiculeDate;
 }
 
 @Injectable({
@@ -34,4 +34,9 @@ export class VehiculeService {
     return this.http.get<Vehicule[]>('http://127.0.0.1:8000/api/v1/vehicles');
 
   }
+
+  addVehicule(vehicule:Vehicule) {
+    return this.http.post<Vehicule>('http://127.0.0.1:8000/api/v1/vehicles', vehicule);
+  }
+   
 }
