@@ -8,6 +8,11 @@ export interface FleetComposition {
   proportion: number;
 }
 
+export interface IFleetOperational {
+  statut: string;
+  nb_vehicules: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,8 +24,11 @@ export class Analytics {
 
 
    getFleetComposition() {
-
     return this.http.get<FleetComposition[]>(`${this.apiUrl}/analytics/fleet-composition`);
+   }
+
+   getFleetOperational() {
+    return this.http.get<IFleetOperational[]>(`${this.apiUrl}/analytics/fleet-operational/vehicle`);
    }
 
 

@@ -3,10 +3,11 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Analytics, FleetComposition } from './services/analytics';
 import { ChartModule } from 'primeng/chart';
 import { isPlatformBrowser } from '@angular/common';
+import { FleetOperational } from './components/fleet-operational/fleet-operational';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,RouterLink,RouterLinkActive,ChartModule],
+  imports: [RouterOutlet,RouterLink,RouterLinkActive,ChartModule,FleetOperational],
   templateUrl: './app.html',
   styleUrl: './app.css',
   standalone: true
@@ -18,7 +19,7 @@ constructor(private cd: ChangeDetectorRef) {
   
   effect(() => {
     if (this.fleetComposition().length > 0) {
-      this.initChart();
+     
     }
   });
 }
@@ -33,6 +34,7 @@ constructor(private cd: ChangeDetectorRef) {
   ngOnInit(): void {
     this.getFleetComposition();
     this.initChart();
+    
   }
 
   getFleetComposition() {

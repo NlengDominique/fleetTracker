@@ -1,11 +1,20 @@
 import { Component, inject, OnInit, signal,effect, EffectRef } from '@angular/core';
 import { RouterLink} from '@angular/router';
 import { Vehicule, VehiculeService } from '../../services/vehicule-service';
+import { TagModule } from 'primeng/tag';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SelectModule } from 'primeng/select';
+import { CommonModule } from '@angular/common';
+import { TableModule } from 'primeng/table';
+import { Table } from 'primeng/table';
 
 
 @Component({
   selector: 'app-vehicule-list',
-  imports: [ RouterLink],
+  imports: [ RouterLink,TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule,CommonModule],
   templateUrl: './vehicule-list.html',
   styleUrl: './vehicule-list.css',
 })
