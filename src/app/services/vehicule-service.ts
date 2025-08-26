@@ -45,5 +45,13 @@ export class VehiculeService {
   deleteVehicule(id:string| undefined) {
     return this.http.delete(`${this.apiUrl}/vehicles/${id}`)
   }
+
+  updateVehicule(id:string| undefined, vehicule:Vehicule) {
+    return this.http.put<Vehicule>(`${this.apiUrl}/vehicles/${id}`, vehicule);
+  }
+
+  getVehicule(id:string| null) {
+    return this.http.get<Vehicule>(`${this.apiUrl}/vehicles/${id}`);
+  }
    
 }

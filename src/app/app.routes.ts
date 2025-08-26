@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { VehiculeList } from './components/vehicule-list/vehicule-list';
 import { AddVehicule } from './components/add-vehicule/add-vehicule';
+import { EditVehicule } from './components/edit-vehicule/edit-vehicule';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,11 @@ export const routes: Routes = [
     path:'vehicule/add',
     component:AddVehicule
   },
+
+  {
+    path:'vehicule/edit/:id',
+    component:EditVehicule
+  }
 
 
 ];

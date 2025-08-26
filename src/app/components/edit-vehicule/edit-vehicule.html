@@ -1,0 +1,38 @@
+<form [formGroup]="vehiculeForm" (ngSubmit)="onSubmit()"  class="max-w-sm mx-auto">
+  <div class="mb-5">
+    <label for="marque" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marque</label>
+    <input formControlName="marque"  type="text" id="marque" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{vehicule().marque}}" required />
+  </div>
+  <div class="mb-5">
+    <label for="modele" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Modele</label>
+    <input formControlName="modele"  type="text" id="modele" value="{{vehicule().modele}}"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+  </div>
+
+    <div class="mb-5">  
+          <label for="type_moteur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Moteur</label>
+
+      <select id="type_moteur" formControlName="type_moteur"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option value="">Choisir</option>
+        <option value="BEV">BEV</option>
+        <option value="ICE">ICE</option>
+        
+      </select>
+      </div>
+<!-- 
+      @if(errors()){
+        {{errors()}}
+      } -->
+ 
+  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+   @if(loading()){
+      Loading...
+   }
+   @else{
+
+     Save
+   }
+  </button>
+    <button type="reset" class="ml-2 text-white bg-gray-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cancel</button>
+
+</form>
+

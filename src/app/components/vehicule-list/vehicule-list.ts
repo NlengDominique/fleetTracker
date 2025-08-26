@@ -1,11 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink} from '@angular/router';
 import { Vehicule, VehiculeService } from '../../services/vehicule-service';
-import { NgClass } from '@angular/common';
+
 
 @Component({
   selector: 'app-vehicule-list',
-  imports: [RouterOutlet, NgClass, RouterLink],
+  imports: [ RouterLink],
   templateUrl: './vehicule-list.html',
   styleUrl: './vehicule-list.css',
 })
