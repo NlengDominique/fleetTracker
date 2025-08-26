@@ -14,7 +14,6 @@
     <table class="min-w-full text-left border-collapse">
       <thead>
         <tr class="bg-gray-100 text-gray-700">
-          <th>ID</th>
           <th class="px-4 py-2 border">Marque</th>
           <th class="px-4 py-2 border">Modèle</th>
           <th class="px-4 py-2 border">Moteur</th>
@@ -23,7 +22,6 @@
         </tr>
         @for (vehicule of vehicules(); track vehicule.id) {
         <tr>
-          <td class="px-4 py-2 border">{{ vehicule.id }}</td>
           <td class="px-4 py-2 border">{{ vehicule.marque }}</td>
           <td class="px-4 py-2 border">{{ vehicule.modele }}</td>
           <td class="px-4 py-2 border">{{ vehicule.type_moteur }}</td>
